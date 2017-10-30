@@ -5,6 +5,7 @@
         'ngSanitize',
         'ui.router',
         'dndLists',
+        'jsondiff',
         'ep.formly.theme'
     ]);
 

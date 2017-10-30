@@ -129,7 +129,7 @@
         function activate() {}
 
 
-        var vm = this;
+        //var vm = this;
         var _ = $window._;
         vm.models = {
             selected: null
@@ -335,8 +335,43 @@
             console.log($scope);
             console.log(item);
         }
+
+        /** Name space to handle the templateType */
+        vm.checkTemplateTypeNS = {
+            addTemplateType: function (jsonobj) {
+                /** make sure the object is not a generic template */
+                if (jsonobj && !jsonobj.template) {
+                    if (jsonobj.fieldGroup) {
+                        if (jsonobj.templateOptions) {
+                            jsonobj.templateOptions.templateType = 'fieldgroup';
+
+                        } else {
+                            jsonobj.templateOptions = {
+                                templateType: 'fieldgroup'
+                            };
+                        }
+                        /** check recurssively for each object in the fieldGroup array */
+                        jsonobj.fieldGroup.forEach(function (element) {
+                            vm.checkTemplateTypeNS.addTemplateType(element);
+                        }, this);
+                    } else if (jsonobj.templateOptions) {
+                        jsonobj.templateOptions.templateType = 'field';
+                    } else if (!jsonobj.templateOptions) {
+                        jsonobj.templateOptions = {
+                            templateType: 'field'
+                        };
+                    }
+                }
+            }
+        };
+
+
         /** on click of a section load the particular JSON field into the formly generator */
         vm.loadSectionJson = function (section) {
+            /** make sure the JSON has the templateType property in all of its  */
+            vm.mergedJsonWithSections[section].forEach(function (element) {
+                vm.checkTemplateTypeNS.addTemplateType(element);
+            }, this);
             vm.dropZoneCollectionListWithFieldGroups = vm.mergedJsonWithSections[section];
         }
 

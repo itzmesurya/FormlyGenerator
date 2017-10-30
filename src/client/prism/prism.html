@@ -193,11 +193,11 @@
         .error-msg {
             padding: 5px;
         }
-
         /* Generator css*/
+
         .detail-div {
             padding: 4px;
-            margin:2px;
+            margin: 2px;
             width: 99%;
             cursor: pointer;
             /* background-color: lightgray; */
@@ -228,6 +228,7 @@
     <link rel="stylesheet" href="https://epsilonda.github.io/cdn/prism/app.css">
     <!-- <div ui-view class="fp-container"></div> -->
 
+    <script src="/src/client/jsondiff/jsondiff.js"></script>
     <script src="/src/client/prism/prism.module.js"></script>
     <script src="/src/client/prism/prism.controller.js"></script>
     <script src="/src/client/prism/jsonInputRepeater.directive.js"></script>
@@ -249,17 +250,17 @@
             </md-card-content>
         </md-card>
         <md-card layout-padding class="demo-column flex-50">
-                <md-toolbar layout-align="center">
-                    <span>
-                        {{'json sections' | uppercase}}
-                    </span>
-                </md-toolbar>
-                <md-card-content class="layout-column" layout-align="start start">
-                    <div class="detail-div" md-whiteframe="3" ng-repeat="section in vm.sections">
-                        <div ng-click="vm.loadSectionJson(section)">{{section | uppercase}}</div>
-                    </div>
-                </md-card-content>
-            </md-card>
+            <md-toolbar layout-align="center">
+                <span>
+                    {{'json sections' | uppercase}}
+                </span>
+            </md-toolbar>
+            <md-card-content class="layout-column" layout-align="start start">
+                <div class="detail-div" md-whiteframe="3" ng-repeat="section in vm.sections">
+                    <div ng-click="vm.loadSectionJson(section)">{{section | uppercase}}</div>
+                </div>
+            </md-card-content>
+        </md-card>
     </div>
     <div class="layout-row">
         <div class="actions-toolbar-left flex-100">
