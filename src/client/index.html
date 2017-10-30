@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <title>Main Page</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
+    <!-- endbower -->
+    <!-- inject:appcss -->
+    <link rel="stylesheet" href="/src/client/assets/css/app.css">
+    <link rel="stylesheet" href="/src/client/lib/angular/angular-csp.css">
+    <link rel="stylesheet" href="/src/client/app/assets/css/app.css">
+    <!-- endinject -->
+</head>
+
+<body ng-controller="mainController as mc">
+    <!-- bower:js -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/api-check/dist/api-check.js"></script>
+    <script src="/bower_components/angular-formly/dist/formly.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/toastr/toastr.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+    <script src="/bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <!-- endbower -->
+    <!-- inject:appjs -->
+    <script src="/src/client/app/app.module.js"></script>
+    <script src="/src/client/app/core/core.module.js"></script>
+    <script src="/src/client/app/layout/layout.module.js"></script>
+    <script src="/src/client/app/directives/directives.module.js"></script>
+    <script src="/src/client/app/partials/partials.module.js"></script>
+    <script src="/src/client/app/services/services.module.js"></script>
+    <script src="/src/client/app/pages/pages.module.js"></script>
+    <script src="/src/client/app/app.config.js"></script>
+    <script src="/src/client/app/app.controller.js"></script>
+    <script src="/src/client/app/core/config.js"></script>
+    <script src="/src/client/app/core/constants.js"></script>
+    <script src="/src/client/app/core/core.route.js"></script>
+    <script src="/src/client/app/layout/shell.controller.js"></script>
+    <script src="/src/client/app/services/data.factory.js"></script>
+    <script src="/src/client/app/pages/home.controller.js"></script>
+    <script src="/src/client/app/pages/layoutpreview.controller.js"></script>
+    <script src="/src/client/app/pages/pages.controller.js"></script>
+    <script src="/src/client/app/pages/pages.routes.js"></script>
+    <script src="/src/client/app/directives/jsonInputRepeater/jsonInputRepeater.directive.js"></script>
+    <script src="/src/client/app/directives/demoPanel/demoPanel.directive.js"></script>
+    <!-- endinject -->
+   
+    <div id="prism">
+            
+    </div>
+    <div id="ace">
+        <!-- <script src="https://epsilonda.github.io/cdn/ace/lib-c051c0f2.js"></script> -->
+        <!-- <script src="https://epsilonda.github.io/cdn/ace/ace-b0e70c08.js"></script> -->
+        <!-- <script src="https://epsilonda.github.io/cdn/ace/app-3c267ce5.js"></script>         -->
+    </div>
+    <!-- <div ng-include="vm.scripts"></div> -->
+    <!-- /section:basics/navbar.layout -->
+    <div ng-include="'app/layout/shell.html'"></div>
+    <!-- /.main-content -->
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+.md-toolbar-tools.material-icons {
+  color: white;
+}
+
+.set-icon-fab {
+  font-size: 1.8rem;
+}
+
+.toolbarText {
+  color: white;
+  font-size: 25px;
+}
+
+.menu-panel-container {
+  width: 100%;
+  pointer-events: auto;
+}
+
+.menu-panel {
+  background-color: white;
+  border-radius: 4px;
+}
+
+.menu-panel .menu-divider {
+  height: 1px;
+  min-height: 1px;
+  max-height: 1px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background-color: rgba(0, 0, 0, 0.11);
+}
+
+.menu-panel .menu-content {
+  flex-direction: column;
+  padding: 8px 0;
+  max-height: 305px;
+  overflow-y: auto;
+  min-width: 256px;
+}
+
+.menu-panel .menu-item {
+  display: flex;
+  flex-direction: row;
+  min-height: 48px;
+  height: 48px;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+.menu-panel .menu-item>* {
+  width: 100%;
+  margin: auto 0;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.menu-panel .menu-item>a.md-button {
+  padding-top: 5px;
+}
+
+.menu-panel .menu-item>.md-button {
+  display: inline-block;
+  border-radius: 0;
+  margin: auto 0;
+  font-size: 15px;
+  text-transform: none;
+  font-weight: 400;
+  height: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+.menu-panel .menu-item>.md-button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+.menu-panel .menu-item>.md-button md-icon {
+  margin: auto 16px auto 0;
+}
+
+.menu-panel .menu-item>.md-button p {
+  display: inline-block;
+  margin: auto;
+}
+
+.menu-panel .menu-item>.md-button span {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.menu-panel .menu-item>.md-button .md-ripple-container {
+  border-radius: inherit;
+}
+
+.desc {
+  background-color: gray;
+  color: white;
+  width: 100%;
+}

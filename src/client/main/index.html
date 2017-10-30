@@ -1,0 +1,68 @@
+<!doctype html>
+<html ng-app="main">
+
+<head>
+    <title>Main Page</title>
+    
+    
+    <!--bower:css-->
+    <link rel="stylesheet" href="../material/bower_components/angular-material/angular-material.css" />
+    <!--endbower-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
+    
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/api-check/dist/api-check.js"></script>
+    <script src="lib/angular-formly/dist/formly.js"></script>
+    
+    <!--bower:js-->
+    <script src="../material/bower_components/angular/angular.js"></script>
+    <script src="../material/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../material/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../material/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../material/bower_components/angular-material/angular-material.js"></script>
+    <script src="../material/bower_components/angular-ui-mask/dist/mask.js"></script>
+    <!--endbower-->
+
+
+    <script src="material/app/directives/directives.module.js"></script>
+    <script src="material/app/templates/templates.module.js"></script>
+    <script src="material/app/core/core.module.js"></script>
+    <script src="material/app/app.module.js"></script>
+    <script src="demo/demo.app.js"></script>
+    <script src="main/main.app.js"></script>
+    <script src="directives/directives.module.js"></script>
+    <script src="directives/navBar.directive.js"></script>
+    <script src="material/app/directives/ep-text/ep-text.directive.js"></script>
+    <script src="main/main.controller.js"></script>
+    <script src="demo/ep-text/ep-text-demo.controller.js"></script>
+
+    <base href="/">
+</head>
+
+<body ng-controller="mainController as mc">
+    <nav-bar></nav-bar>
+    <md-content layout-padding>
+        <ng-view></ng-view>
+    </md-content>
+</body>
+
+</html>
+
+<!--<md-sidenav md-component-id="left" class="md-sidenav-left">
+        <md-toolbar>s
+            <h1 class="md-toolbar-tools">Sidenav Left</h1>
+        </md-toolbar>
+        <md-content layout-padding="">
+            <md-button ng-click="close()" class="md-primary" hide-gt-md="">
+                Close Sidenav Left
+            </md-button>
+            <p hide="" show-gt-md="">
+                This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
+            </p>
+        </md-content>
+    </md-sidenav>
+    <md-button ng-click="openLeftMenu()">
+        Open Left Menu
+    </md-button>-->

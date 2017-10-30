@@ -1,0 +1,61 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.clear-fix {
+    clear: both;
+}
+
+.fp-primary {
+    background-color: royalblue;
+}
+
+.fp-row {
+    width: 100%;
+}
+
+.fp-toolbar {
+    min-height: 50px;
+    color: white;
+}
+
+demo-panel .demo-panel-title {
+    padding: 10px;
+}
+
+.fp-content {
+    display: inline-block;
+    width: 100%;
+}
+
+.fp-toolbar h1 {
+    padding: 25px;
+}
+
+.fp-col-4 {
+    width: 25%;
+    display: inline-block;
+}
+
+.fp-col-2 {
+    width: 49.5%;
+    display: inline-block;
+}
+
+.fp-col-3 {
+    width: 33%;
+    display: inline-block;
+}
+
+.section-div {
+    padding: 10px;
+    background-color: lightgray;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.param-div {
+    padding: 10px;
+    background-color: lightgray;
+    margin: 5px;
+}

@@ -1,0 +1,453 @@
+<!doctype html>
+<html ng-app="ep.prism">
+
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <title>Prism Page</title>
+    <style>
+        .source-tree-container ul {
+            padding: 0px;
+        }
+
+        .source-tree-container li {
+            background-color: grey;
+            border-radius: 0px;
+            color: white;
+            margin: 3px;
+            padding: 8px;
+        }
+
+        .source-tree-container li {
+            width: 277.5px;
+        }
+
+        .source-tree-container input[type="text"] {
+            width: 310px;
+        }
+
+        .source-tree-container md-input-container {
+            padding: 5px;
+            background-color: white;
+            margin: 10px 0 0 0;
+        }
+
+        .filter-container-wrapper {
+            width: 100%;
+            padding: 6px;
+            border-radius: 2px;
+        }
+
+        .drop-zone-container {
+            min-height: 252px;
+        }
+
+        .drop-zone-container ul {
+            padding: 0px;
+            list-style-type: none;
+        }
+
+        .drop-zone-container li {
+            border-radius: 0px;
+            color: white;
+            margin: 2px;
+            background-color: black;
+            padding: 2px;
+            min-height: 50px;
+        }
+
+        .item {
+            border-radius: 0px;
+            background-color: grey;
+            padding: 5px;
+            border: 1px solid black;
+            min-height: 50px;
+            position: relative;
+        }
+
+        .item:hover {
+            border: 2px solid grey;
+            background-color: black;
+        }
+
+        .container-element {
+            background-color: grey;
+            padding: 5px;
+            border: 1px solid black;
+            border-radius: 0px;
+            position: relative;
+        }
+
+        .container-element:hover {
+            background-color: grey;
+            color: black;
+        }
+
+        .container-element li {
+            background-color: black;
+            margin: 2px;
+        }
+
+        .remove-item-button {
+            cursor: pointer;
+            position: absolute;
+            background-color: transparent;
+            border: 0px solid transparent;
+            border-radius: 6px;
+            top: 0px;
+            right: 0px;
+            margin: 1px 3px;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .field-no-item-text {
+            text-align: center;
+        }
+
+        .field-dialog md-dialog-actions {
+            border-top: 1px solid #999;
+        }
+
+        .field-dialog {
+            max-height: 70%;
+            overflow-x: auto;
+        }
+
+        .field-dialog md-dialog-content {
+            padding: 15px;
+        }
+
+        .dialogToolBarTitle {
+            padding: 15px;
+            position: relative;
+        }
+
+        .demo-column md-card-content {
+            max-height: 250px;
+            overflow: auto;
+        }
+
+        .fieldgroup-row {
+            background-color: lightsalmon
+        }
+
+        .fieldgroup-col {
+            background-color: lightskyblue;
+        }
+
+        .fieldgroup-col ul {
+            min-height: 50px;
+            overflow: auto;
+        }
+
+        .actions-toolbar-left button {
+            float: left;
+        }
+
+        .actions-toolbar-right button {
+            float: right;
+        }
+
+        .custom-fields-modal-dialog-error-container {
+            position: relative;
+            background-color: lightpink;
+            color: maroon;
+        }
+
+        .custom-fields-modal-dialog-error-container textarea {
+            resize: vertical;
+        }
+
+        .close-error {
+            cursor: pointer;
+            position: absolute;
+            background-color: transparent;
+            border: 0px solid transparent;
+            border-radius: 6px;
+            top: 7px;
+            right: 0px;
+            margin: 1px 3px;
+            color: maroon;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .custom-fields-textarea textarea {
+            border: 1px solid lightpink;
+        }
+
+        .custom-fields-modal-dialog-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .custom-fields-modal-dialog-close input {
+            color: white;
+            background-color: transparent;
+            border: 0;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-weight: bold;
+        }
+
+        .error-msg {
+            padding: 5px;
+        }
+
+        /* Generator css*/
+        .detail-div {
+            padding: 4px;
+            margin:2px;
+            width: 99%;
+            cursor: pointer;
+            /* background-color: lightgray; */
+        }
+    </style>
+</head>
+
+<body ng-controller="PrismController as vm">
+    <!-- bower:js -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/api-check/dist/api-check.js"></script>
+    <script src="/bower_components/angular-formly/dist/formly.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/toastr/toastr.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+    <script src="/bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <!-- endbower -->
+    <script src="https://epsilonda.github.io/cdn/prism/lib.js"></script>
+    <script src="https://epsilonda.github.io/cdn/prism/prism.min.js"></script>
+    <script src="https://epsilonda.github.io/cdn/prism/app.js"></script>
+
+    <link rel="stylesheet" href="https://epsilonda.github.io/cdn/prism/lib.css">
+    <link rel="stylesheet" href="https://epsilonda.github.io/cdn/prism/prism.min.css">
+    <link rel="stylesheet" href="https://epsilonda.github.io/cdn/prism/app.css">
+    <!-- <div ui-view class="fp-container"></div> -->
+
+    <script src="/src/client/prism/prism.module.js"></script>
+    <script src="/src/client/prism/prism.controller.js"></script>
+    <script src="/src/client/prism/jsonInputRepeater.directive.js"></script>
+
+    <div layout-padding class="layout-row" flex>
+        <div class="md-headline" layout-align="center">{{'Formly Generator' | uppercase}}</div>
+    </div>
+    <div class="layout-row">
+        <md-card layout-padding class="demo-column flex-50">
+            <md-toolbar layout-align="center">
+                <span>
+                    {{'Details of the program and form' | uppercase}}
+                </span>
+            </md-toolbar>
+            <md-card-content class="layout-column" layout-align="start start">
+                <div ng-repeat="(key,val) in vm.details">
+                    <div class="detail-div">{{key | uppercase}} : {{val | uppercase}}</div>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card layout-padding class="demo-column flex-50">
+                <md-toolbar layout-align="center">
+                    <span>
+                        {{'json sections' | uppercase}}
+                    </span>
+                </md-toolbar>
+                <md-card-content class="layout-column" layout-align="start start">
+                    <div class="detail-div" md-whiteframe="3" ng-repeat="section in vm.sections">
+                        <div ng-click="vm.loadSectionJson(section)">{{section | uppercase}}</div>
+                    </div>
+                </md-card-content>
+            </md-card>
+    </div>
+    <div class="layout-row">
+        <div class="actions-toolbar-left flex-100">
+            <button md-button class="md-raised md-nissan" ng-click="vm.showHideFields()">{{(vm.hideFieldsPanels)? 'Show Fields': 'Hide Fields'}}</button>
+            <button md-button class="md-raised md-nissan" ng-click="vm.showHideFieldsArray()">{{vm.hideFieldsArrayPanels?'Show Fields Array':'Hide Fields Array'}}</button>
+        </div>
+        <div class="actions-toolbar-right flex-100">
+            <button md-button class="md-raised md-nissan" ng-click="vm.showCustomFieldsModal($event)">Got your own fields?</button>
+        </div>
+    </div>
+    </div>
+    <div class="layout-row">
+        <md-card class="demo-column fields-column" layout-padding flex="20" ng-hide="vm.hideFieldsPanels">
+            <md-toolbar layout-align="center">
+                <span>{{'Fields' | uppercase}}</span>
+            </md-toolbar>
+            <md-card-content class="source-tree-container layout-column" layout-align="start center">
+                <div class="filter-container-wrapper flex-100 md-whiteframe-1dp">
+                    <md-input-container>
+                        <label>Find Field</label>
+                        <input ng-model="vm.fieldFilterText" type="text">
+                    </md-input-container>
+                </div>
+                <ul>
+                    <li ng-if="item.templateOptions.label" ng-repeat="item in vm.formlyTemplatesList | orderBy:'templateOptions.label' | filter:vm.fieldFilterText "
+                        dnd-dragstart="vm.fieldDragStart()" dnd-dragend="vm.fieldGroupDragEnd(item, event)" dnd-draggable="item"
+                        dnd-effect-allowed="copy">
+                        {{item.templateOptions.label | uppercase}}
+                    </li>
+                    <li ng-if="item.template" ng-repeat="item in vm.formlyTemplatesList | orderBy:'templateOptions.label' " dnd-dragstart="vm.fieldDragStart()"
+                        dnd-dragend="vm.fieldGroupDragEnd(item, event)" dnd-draggable="item" dnd-effect-allowed="copy">
+                        {{'generic template' | uppercase}}
+                    </li>
+                </ul>
+            </md-card-content>
+        </md-card>
+        <md-card class="demo-column" layout-padding flex>
+            <md-toolbar layout-align="center">
+                <span>{{'Drop Zone' | uppercase}}</span>
+            </md-toolbar>
+            <md-card-content class="drop-zone-container">
+                <ul dnd-list="vm.dropZoneCollectionListWithFieldGroups" style="min-height: 50px;list-style: none;">
+                    <li ng-repeat="item in vm.dropZoneCollectionListWithFieldGroups" dnd-effect-allowed="move" dnd-draggable="item" dnd-moved="vm.dropZoneCollectionListWithFieldGroups.splice($index,1)">
+                        <div ng-if="item.templateOptions.templateType" ng-include="item.templateOptions.templateType + '.html'"></div>
+                        <div ng-if="item.template" ng-include="'generic-template.html'"></div>
+                    </li>
+                </ul>
+            </md-card-content>
+            <md-card-actions class="layout-row" layout-align="end center">
+                <md-button class="md-raised md-nissan" ng-click="vm.reset($event)">Reset Fields</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card class="demo-column fields-array-column" layout-padding ng-hide="vm.hideFieldsArrayPanels" flex="30">
+            <md-toolbar layout-align="center">
+                <span>{{'Fields Array' | uppercase}}</span>
+            </md-toolbar>
+            <md-card-content>
+                <textarea cols="80" rows="20000" id="fieldsTextArea" ng-readonly="true" ng-model="vm.formlyFieldsForTextArea"></textarea>
+            </md-card-content>
+            <md-card-actions class="layout-row" layout-align="end center">
+                <md-button class="md-raised md-nissan" ng-click="vm.copyFieldArrayFromText($event)">Copy Fields</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <div class="layout-row" ng-if="vm.dropZoneCollectionListWithFieldGroups.length > 0">
+        <md-card layout-padding flex>
+            <md-toolbar layout-align="center">
+                <span>{{'Preview' | uppercase}}</span>
+            </md-toolbar>
+            <md-card-content>
+                <form name="form1" novalidate>
+                    <formly-form class="form-horizontal" id="form-horizontal" model="vm.formModel" fields="vm.formlyFieldsForPreivew" form="vm.myform"
+                        options="vm.options">
+                    </formly-form>
+                </form>
+            </md-card-content>
+        </md-card>
+    </div>
+
+    <!-- FieldGroup Template  -->
+    <script type="text/ng-template" id="fieldgroup.html">
+        <div class="container-element fieldgroup-row" ng-click="vm.showConfigModal($event, item)">
+            <div ng-show="item.fieldGroup.length === 0" class="field-no-item-text">
+                {{'fieldgroup with row design'|uppercase}}
+            </div>
+            <ul dnd-list="item.fieldGroup" style="min-height: 50px;">
+                <li ng-repeat="item in item.fieldGroup" dnd-draggable="item" dnd-effect-allowed="move" dnd-moved="vm.deepSeacrhAndRemove(item, event)">
+                    <div ng-if="item.templateOptions.templateType" ng-include="item.templateOptions.templateType + '.html'"></div>
+                    <div ng-if="item.template" ng-include="'generic-template.html'"></div>
+                </li>
+            </ul>
+            <button type="button" ng-show="item.fieldGroup.length === 0" class="remove-item-button" ng-click="vm.deepSeacrhAndRemove(item, $event)">x</button>
+        </div>
+    </script>
+
+    <!--Field Group column template  -->
+    <script type="text/ng-template" id="fieldgroup-col.html">
+        <div class="container-element fieldgroup-col" ng-click="vm.showConfigModal($event, item)">
+            <div ng-show="item.fieldGroup.length === 0" class="field-no-item-text">
+                {{'fieldgroup with column design'|uppercase}}
+            </div>
+            <ul dnd-list="item.fieldGroup" dnd-horizontal-list="true">
+                <li ng-repeat="item in item.fieldGroup" dnd-draggable="item" dnd-effect-allowed="move" dnd-moved="vm.deepSeacrhAndRemove(item, event)"
+                    style="width:150px;float: left;">
+                    <div ng-if="item.templateOptions.templateType" ng-include="item.templateOptions.templateType + '.html'"></div>
+                    <div ng-if="item.template" ng-include="'generic-template.html'"></div>
+                </li>
+            </ul>
+            <button type="button" ng-show="item.fieldGroup.length === 0" class="remove-item-button" ng-click="vm.deepSeacrhAndRemove(item, $event)">x</button>
+        </div>
+    </script>
+
+    <!--Field Template  -->
+    <script type="text/ng-template" id="field.html">
+        <div class="item" ng-click="vm.showConfigModal($event, item)" layout="column">
+            <div>{{item.templateOptions.label}}</div>
+            <div>{{item.type | uppercase}}</div>
+            <button type="button" class="remove-item-button" ng-click="vm.deepSeacrhAndRemove(item, $event)">x</button>
+        </div>
+    </script>
+
+    <!-- Generic Template -->
+    <script type="text/ng-template" id="generic-template.html">
+        <div class="item" ng-click="vm.showConfigModal($event, item)" layout="column">
+            <div>{{'generic tempalte' | uppercase}}</div>
+            <button type="button" class="remove-item-button" ng-click="vm.deepSeacrhAndRemove(item, $event)">x</button>
+        </div>
+    </script>
+
+    <!--Modal Template  -->
+    <script type="text/ng-template" id="field-modal.html">
+        <md-dialog class="field-dialog" flex="60">
+            <md-toolbar>
+                <div class="dialogToolBarTitle">
+                    <span ng-if="d.configItem.template">{{'generic template' | uppercase}}</span>
+                    <span>{{d.configItem.type | uppercase}}</span>
+                    <span ng-if="!d.configItem.type">{{d.configItem.templateOptions.type | uppercase}}</span>
+                    <div class="custom-fields-modal-dialog-close">
+                        <input type="button" value="x" ng-click="d.closeFieldConfigDialog()">
+                    </div>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <json-input-repeater rops="d.rops" data="d.configItem"></json-input-repeater>
+            </md-dialog-content>
+            <md-dialog-actions class="layout-row">
+                <button md-button ng-click="d.passConfig(d.configItem)">Close</button>
+            </md-dialog-actions>
+        </md-dialog>
+    </script>
+
+    <!--custom-fields-modal-dialog.html  -->
+    <script type="text/ng-template" id="custom-fields-modal-dialog.html">
+        <md-dialog class="field-dialog errors-dialog" flex="60">
+            <md-toolbar>
+                <div class="dialogToolBarTitle">
+                    {{'custom fields' | uppercase}}
+                    <div class="custom-fields-modal-dialog-close">
+                        <input type="button" value="x" ng-click="cfd.closeCustomFieldsDialog()">
+                    </div>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="layout-column layout-padding">
+                    <div class="custom-fields-modal-dialog-error-container" ng-if="cfd.showError">
+                        <div class="error-msg">
+                            <b>{{'error' | uppercase}} : {{cfd.errorMsg | uppercase}}</b>
+                            <div>
+                                <small>
+                                    <b>Tip: </b>Drag the handle of the area below downwards to expand the JSON object</small>
+                            </div>
+                        </div>
+                        <input type="button" class="close-error" ng-click="cfd.closeError()" value="x">
+                        <textarea cols="80" id="custom-fields-errors-textarea" rows="3" ng-model="cfd.errorJson" ng-disabled="true" style="width:100%;"></textarea>
+                    </div>
+                    <div class="custom-fields-textarea">
+                        <textarea cols="80" rows="20000" id="cfdFieldsTextArea" ng-change="cfd.customFieldsTextAreaChange()" ng-model="cfd.formlyFieldsForTextArea"
+                            style="width:100%;"></textarea>
+                    </div>
+                </div>
+
+            </md-dialog-content>
+            <md-dialog-actions class="layout-row">
+                <button md-button class="md-raised md-nissan" ng-if="cfd.formlyFieldsForTextArea" ng-click="cfd.passFields()">Parse</button>
+            </md-dialog-actions>
+        </md-dialog>
+    </script>
+
+</body>
+
+</html>

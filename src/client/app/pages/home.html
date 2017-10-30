@@ -1,0 +1,28 @@
+
+<!-- <div ng-include="vm.scripts"></div> -->
+<div ng-hide="vm.jsonDetailsHideBool" class="fp-row">
+    <div class="fp-col-2">
+        <demo-panel title="{{'json details' | uppercase}}">
+            <div ng-repeat="(key, val) in vm.params">
+                <div class="param-div" ng-if="key !== '#'">
+                    {{key}} : {{val}}
+                </div>
+            </div>
+        </demo-panel>
+    </div>
+    <div class="fp-col-2">
+        <demo-panel title="{{'sections' | uppercase}}">
+            <div ng-repeat="section in vm.sections">
+                <div class="section-div" ng-click="vm.loadFormlyFieldsForSection(section)">
+                    {{section}}
+                </div>
+            </div>
+            <a href="/jsonread">Test</a>
+        </demo-panel>
+    </div>
+</div>
+<div class="fp-row">
+    <formly-form class="form-horizontal" id="form-horizontal" model="vm.formModel" fields="vm.formlyFieldsForPreivew" form="vm.myform"
+        options="vm.options">
+    </formly-form>
+</div>

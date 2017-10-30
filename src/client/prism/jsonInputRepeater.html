@@ -1,0 +1,272 @@
+<style>
+    .repeaterItem {
+        position: relative;
+        padding: 3px;
+    }
+
+    .repeaterItem:hover {
+        background-color: lightgray;
+        border: 1px solid lightcoral;
+    }
+
+    .repeaterClass md-input-container {
+        width: 100%;
+    }
+
+    .repeaterItem md-input-container {
+        width: 100%;
+    }
+
+    .add-property-div {
+        min-height: 50px;
+        background-color: lightgoldenrodyellow;
+        border: 1px solid lightcoral;
+        margin-top: 5px;
+    }
+
+    .add-property-div .flex-100 {
+        margin: 5px;
+    }
+
+    .repeaterItem .item-delete {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: transparent;
+        border-radius: 2px;
+        border: 1px solid lightcoral;
+    }
+
+    .add-property-div-title {
+        background-color: lightcoral;
+        color: white;
+        padding: 10px;
+        margin: 1px 1px 0 1px;
+    }
+
+    .add-property-div-footer {
+        border-top: 1px solid lightcoral;
+    }
+
+    .add-property-div-footer button {
+        float: right;
+    }
+
+    .array-object-div {
+        position: relative;
+        border: 1px solid gray;
+        margin-top: 5px;
+    }
+
+    .add-object-to-array-div {
+        min-height: 50px;
+        background-color: lightgoldenrodyellow;
+        border: 1px solid lightcoral;
+        margin-top: 10px;
+    }
+
+    .add-object-to-array-div .flex-100 {
+        padding: 3px;
+    }
+
+    .add-object-to-array-div .action-div {
+        text-align: center;
+        position: relative;
+    }
+
+    .add-object-to-array-div .title-div {
+        background-color: lightcoral;
+        color: white;
+        padding: 10px;
+        margin: 1px;
+    }
+
+    .add-object-to-array-div .action-div button {
+        position: absolute;
+        top: 20%;
+    }
+
+    .add-object-to-array-div .footer-div button {
+        float: right;
+    }
+
+    .property-table {
+        background-color: lightcoral;
+        width: 100%;
+    }
+
+    .property-table td span {
+        margin-left: 50%;
+    }
+
+    .property-table thead td {
+        background-color: lightcoral;
+        color: white;
+    }
+
+    .property-table tbody td {
+        background-color: lightgoldenrodyellow;
+        border: 1px solid lightcoral;
+        color: grey;
+    }
+
+    .property-table tbody tr {
+        padding: 20px;
+    }
+</style>
+<div class="repeaterClass">
+    <div class="repeaterItemContainer">
+        <div class="repeaterItem" ng-hide="vm.checkRops(key)" ng-repeat="(key,val) in data" flex>
+            <div layout="row" layout-align="center center">
+                <div ng-if="data[key].constructor !== {}.constructor && data[key].constructor !== [].constructor" flex>
+                    <md-input-container ng-if="vm.isTypeOf(val, 'string')">
+                        <label>{{key | uppercase}}</label>
+                        <input type="text" ng-model="data[key]">
+                    </md-input-container>
+                    <md-input-container ng-if="vm.isTypeOf(val, 'number')">
+                        <label>{{key | uppercase}}</label>
+                        <input type="number" ng-blur="vm.numInputBlur(val)" ng-model="data[key]">
+                    </md-input-container>
+                    <md-input-container ng-if="data[key].constructor === true.constructor">
+                        <md-checkbox ng-model="data[key]" aria-label="{{key}}">{{key | uppercase}}</md-checkbox>
+                    </md-input-container>
+                    <input type="button" class="item-delete" value="x" ng-if="!vm.noRemoveButton" ng-click="vm.deleteItem(data,key)">
+                </div>
+                </br>
+                <div ng-if="data[key].constructor === {}.constructor" flex>
+                    <demo-panel title="{{key | uppercase}}" ng-hide="vm.checkRops(key)">
+                        <json-input-repeater rops="rops" data="data[key]"></json-input-repeater>
+                        <div ng-include="'add-property-div.html'">
+                        </div>
+                    </demo-panel>
+                </div>
+                <div ng-if="data[key].constructor === [].constructor" flex>
+                    <demo-panel title="{{key | uppercase}}">
+                        <div ng-repeat="item in data[key]" class="array-object-div" ng-hide="vm.checkRops(key)">
+                            <json-input-repeater rops="rops" no-remove-button="true" data="item"></json-input-repeater>
+                            <input type="button" class="item-delete" value="x" ng-click="vm.removeObjectFromArray(item, data[key])">
+                        </div>
+                        <div class="add-object-to-array-div layout-column">
+                            <!--title  -->
+                            <div class="flex-100 title-div">
+                                <b>{{'add object to ' | uppercase}} {{key | uppercase}}</b>
+                            </div>
+                            <!--adding containers  -->
+                            <div class="layout-row">
+                                <div class="flex-100">
+                                    <md-input-container>
+                                        <label>Select Type</label>
+                                        <md-select ng-model="data[key].newItemType" placeholder="">
+                                            <md-option value="number">number</md-option>
+                                            <md-option value="string">string</md-option>
+                                            <md-option value="boolean">boolean</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                                <div class="flex-100">
+                                    <md-input-container>
+                                        <label>Property Name</label>
+                                        <input type="text" ng-model="data[key].newProperty.key">
+                                    </md-input-container>
+                                </div>
+                                <div class="flex-100">
+                                    <md-input-container ng-if="data[key].newItemType === 'string'">
+                                        <input type="text" ng-model="data[key].newProperty.val">
+                                    </md-input-container>
+                                    <md-input-container ng-if="data[key].newItemType === 'number'">
+                                        <input type="number" value="0" ng-blur="vm.numInputBlur(data[key])" ng-model="data[key].newProperty.val">
+                                    </md-input-container>
+                                    <md-input-container ng-if="data[key].newItemType === 'boolean'">
+                                        <md-checkbox ng-model="data[key].newProperty.val" aria-label="{{data[key].newProperty.key}}">{{data[key].newProperty.key}}</md-checkbox>
+                                    </md-input-container>
+                                </div>
+                                <div class="flex-100 action-div">
+                                    <md-button class="md-raised md-primary" ng-if="data[key].newProperty.val || data[key].newProperty.val === 0" ng-click="vm.addNewChildProperty(data[key])">Add Property</md-button>
+                                </div>
+                            </div>
+                            <!--representing table  -->
+                            <div class="flex-100" ng-if="data[key].newObjectTable && data[key].newObjectTable.length > 0">
+                                <table class="property-table">
+                                    <thead>
+                                        <tr>
+                                            <td>
+                                                Property
+                                            </td>
+                                            <td>
+                                                Value
+                                            </td>
+                                            <td>
+                                                Action
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="object in data[key].newObjectTable">
+                                            <td ng-repeat="(key,val) in object">
+                                                <span>{{val}}</span>
+                                            </td>
+                                            <td>
+                                                <md-button style="margin-left:40%" class="md-raised md-warn" ng-click="vm.deleteChildProperty(object, data[key])">Remove</md-button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--footer to the add-object-to-array-div  -->
+                            <div class="flex-100 footer-div" ng-if="data[key].newObjectTable && data[key].newObjectTable.length > 0">
+                                <md-button class="md-raised md-primary" ng-click="vm.addNewObjectProperty(data[key])">Add Object</md-button>
+                            </div>
+                        </div>
+                    </demo-panel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add property to object -->
+<script type="text/ng-template" id="add-property-div.html">
+    <div class="layout-column add-property-div">
+        <div class="add-property-div-title">
+            <b>{{'add new property to ' | uppercase }} {{key | uppercase}}</b>
+        </div>
+        <div class="layout-row" flex>
+            <div ng-hide="true" class="flex-100">
+                <label>data[key]:</label>
+                <pre>{{data[key] | json}}</pre>
+            </div>
+            <div class="flex-100">
+                <md-input-container>
+                    <label>Property Name</label>
+                    <input type="text" ng-model="data[key].newProperty.key">
+                </md-input-container>
+            </div>
+            <div class="flex-100" ng-if="data[key].newProperty.key">
+                <md-input-container>
+                    <label>Select Type</label>
+                    <md-select ng-model="data[key].newItemType" ng-change="vm.newItemTypeChange(data[key])" placeholder="">
+                        <md-option value="number">number</md-option>
+                        <md-option value="string">string</md-option>
+                        <md-option value="boolean">boolean</md-option>
+                        <md-option value="array">array</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="flex-100" ng-if="data[key].newItemType">
+                <md-input-container ng-if="data[key].newItemType === 'string'">
+                    <input type="text" ng-model="data[key].newProperty.val">
+                </md-input-container>
+                <md-input-container ng-if="data[key].newItemType === 'number'">
+                    <input type="number" ng-blur="vm.numInputBlur(val)" ng-model="data[key].newProperty.val">
+                </md-input-container>
+                <md-input-container ng-if="data[key].newItemType === 'boolean'">
+                    <md-checkbox ng-model="data[key].newProperty.val" aria-label="{{data[key].newProperty.key}}">{{data[key].newProperty.key}}</md-checkbox>
+                </md-input-container>
+            </div>
+        </div>
+        <div class="add-property-div-footer">
+            <md-button class="md-raised md-primary" ng-disabled="!data[key].newProperty.val" ng-click="vm.addNewProperty(data[key])">Add</md-button>
+        </div>
+    </div>
+</script>
