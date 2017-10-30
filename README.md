@@ -1,5 +1,5 @@
-# ngmaterialformly
-POC with Angular + Material + Formly
+# Formly Generator
+Application to generate the formly fields in both ACE and PRISM. The same will be integrated with AXIS admin
 
 
 # **Please Note:** :
