@@ -137,190 +137,40 @@
 
         vm.formlyTemplatesList = [];
 
-        vm.formlyTemplatesList.push({
-            type: 'ep-text',
-            className: 'layout-padding',
-            templateOptions: {
-                label: 'TextBox',
-                templateType: 'field',
-                required: true,
-                maxlength: 30,
-                minlength: 10,
-                disabled: true,
-                placeholder: 'placeholder here...',
-                noFloat: true,
-                validator: 'phone'
-            },
-            validation: {
-                messages: {
-                    required: '"Field is required"',
-                    pattern: '"Invalid Phone Expected Format : xxx-xxx-xxxx"',
-                    'md-maxlength': '"Max length is reached"',
-                    minlength: '"Minimim Characters Required"'
+        $http.post('/api/getJson/PRISMMetaData').then(function (response) {
+            // console.log(response.data);
+            vm.formlyTemplatesList = response.data;
+            vm.formlyTemplatesList.push({
+                fieldGroup: [],
+                className: 'layout-column',
+                templateOptions: {
+                    type: 'Formly FieldGroup',
+                    label: 'fieldgroup',
+                    templateType: 'fieldgroup'
                 }
-            }
+            });
 
-        });
-
-        vm.formlyTemplatesList.push({
-            type: 'ep-dropdown',
-            className: 'layout-padding',
-            templateOptions: {
-                label: 'DropDown',
-                templateType: 'field',
-                options: [{
-                    id: 0,
-                    Name: 'TestValue'
-                }],
-                required: true,
-                valueProp: 'id',
-                labelProp: 'Name',
-                multiple: false,
-                defaultRequired: true,
-                enableSearch: true
-            },
-            expressionProperties: {},
-            validation: {
-                messages: {
-                    required: '\"Please select an option\"'
+            //fieldgroup-col
+            vm.formlyTemplatesList.push({
+                fieldGroup: [],
+                className: 'layout-row',
+                templateOptions: {
+                    type: 'Formly FieldGroup',
+                    label: 'fieldgroup-column-container',
+                    templateType: 'fieldgroup-col'
                 }
-            }
-        });
+            });
 
-        vm.formlyTemplatesList.push({
-            key: 'button',
-            id: 'Button1',
-            type: 'ep-button',
-            templateOptions: {
-                templateType: 'field',
-                class: 'md-raised md-primary',
-                title: 'Button',
-                label: 'Button',
-                onClick: 'formState.onClick(model)'
-            }
-        });
+            vm.formlyTemplatesList.push({
+                template: '<div></div>'
+            });
 
-        vm.formlyTemplatesList.push({
-            key: 'person',
-            id: 'person',
-            type: 'ep-auto-complete',
-            templateOptions: {
-                label: 'AutoComplete',
-                templateType: 'field',
-                minLength: 13,
-                maxLength: 34,
-                required: true,
-                displayProperty: 'name',
-                isDisabled: false,
-                noCache: true,
-                placeholder: 'Select a person',
-                resource: {
-                    apiUrl: '/api/filterJson',
-                    postObj: {
-                        filename: 'piggybank',
-                        propname: 'name'
-                    }
-                },
-                data: [{
-                        'index': 8,
-                        'name': 'Michael Huffman',
-                        'age': 24,
-                        'balance': '$2,028.75'
-                    },
-                    {
-                        'index': 9,
-                        'name': 'Bartlett Baird',
-                        'age': 32,
-                        'balance': '$2,787.56'
-                    },
-                    {
-                        'index': 10,
-                        'name': 'Baird Mccray',
-                        'age': 23,
-                        'balance': '$2,090.15'
-                    },
-                    {
-                        'index': 11,
-                        'name': 'Barker Hall',
-                        'age': 25,
-                        'balance': '$1,022.24'
-                    }
-                ]
-            },
-            validation: {
-                messages: {
-                    required: '\'Person is required\'',
-                    minlength: '\'Min length error\'',
-                    maxlength: '\'Max length error\''
-                }
-            }
-        });
+            /** make sure the JSON has the templateType property in all of its  */
+            vm.formlyTemplatesList.forEach(function (element) {
+                vm.checkTemplateTypeNS.addTemplateType(element);
+            }, this);
+        }, function (response) {
 
-        vm.formlyTemplatesList.push({
-            key: 'notifications',
-            id: 'notifications',
-            type: 'ep-checkbox',
-            templateOptions: {
-                label: 'CheckBox',
-                templateType: 'field',
-                required: true,
-                islist: false,
-            },
-            validation: {
-                messages: {
-                    required: 'Notifications is required'
-                }
-            }
-        });
-
-        vm.formlyTemplatesList.push({
-            key: 'DatePicker',
-            type: 'ep-datepicker',
-            id: 'EmployeeDOB',
-            className: 'flex-100',
-            templateOptions: {
-                templateType: 'field',
-                label: 'DatePicker',
-                options: [],
-                required: true,
-                defaultRequired: true,
-                disable: true,
-                format: 'yyyy/MM/dd',
-                minDate: '1/1/2015',
-                maxDate: '1/1/2020',
-                disabled: false
-            },
-            validation: {
-                messages: {
-                    required: '\"DOB is required\"',
-                    mindate: '\"minDate is required\"'
-                }
-            }
-        });
-
-        vm.formlyTemplatesList.push({
-            fieldGroup: [],
-            className: 'layout-column',
-            templateOptions: {
-                type: 'Formly FieldGroup',
-                label: 'fieldgroup',
-                templateType: 'fieldgroup'
-            }
-        });
-
-        //fieldgroup-col
-        vm.formlyTemplatesList.push({
-            fieldGroup: [],
-            className: 'layout-row',
-            templateOptions: {
-                type: 'Formly FieldGroup',
-                label: 'fieldgroup-column-container',
-                templateType: 'fieldgroup-col'
-            }
-        });
-
-        vm.formlyTemplatesList.push({
-            template: '<div></div>'
         });
 
         vm.dropZoneCollectionListWithFieldGroups = [];
