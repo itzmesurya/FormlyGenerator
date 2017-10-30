@@ -1,0 +1,413 @@
+[{
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-text",
+        "templateOptions": {
+            "label": "Textbox",
+            "required": true,
+            "maxlength": 30,
+            "minlength": 10,
+            "title": "Title",
+            "placeholder": "Placeholder",
+            "validator": "phone",
+            "className": "width-100"
+        },
+        "validation": {
+            "messages": {}
+        }
+    }, {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-textarea",
+        "templateOptions": {
+            "label": "TextArea",
+            "placeholder": "Placeholder",
+            "required": true,
+            "maxlength": 300,
+            "minlength": 10,
+            "title": "Title",
+            "rows": 3,
+            "noResize": true,
+            "noAutogrow": false,
+            "maxRows": 5,
+            "className": "width-100"
+        },
+        "validation": {
+            "messages": {}
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-inputmask",
+        "templateOptions": {
+            "label": "Masked Input",
+            "required": true,
+            "placeholder": "(XX)-(XX)-(XX)-(XXXX)",
+            "maskFormat": "(99)-(99)-(99)-(9999)",
+            "className": "width-100"
+        },
+        "validation": {
+            "messages": {}
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-htmleditor",
+        "templateOptions": {
+            "label": "HTML Editor",
+            "required": true,
+            "noResize": true,
+            "noAutogrow": false,
+            "className": "width-100",
+            "removeButtons": "Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Scayt,Link,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Maximize,Source,Styles,Format"
+
+        },
+        "validation": {
+            "messages": {}
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-checkbox",
+        "templateOptions": {
+            "label": "CheckBox",
+            "required": true,
+            "islist": false,
+            "ngTrueValue": "'Yes'",
+            "ngFalseValue": "'No'",
+            "className": "md-primary width-100"
+        },
+        "validation": {
+            "messages": {}
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-checkbox",
+        "templateOptions": {
+            "label": "CheckBox List",
+            "required": true,
+            "className": "md-warn paddingX5",
+            "listClassName": "layout-row ",
+            "selectAllRequired": true,
+            "islist": true,
+            "listLabel": "Select Countries",
+            "options": []
+        },
+        "validation": {
+            "messages": {}
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-switch",
+        "templateOptions": {
+            "label": "Switch",
+            "required": true,
+            "ngTrueValue": "'Yes'",
+            "ngFalseValue": "'No'",
+            "className": "md-primary width-100"
+        },
+        "validation": {
+            "messages": {},
+            "errorExistsAndShouldBeVisible": false
+        }
+    },
+    {
+
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-dropdown",
+        "templateOptions": {
+            "label": "Dropdown",
+            "options": [],
+            "required": true,
+            "valueProp": "ValueColumnProperty",
+            "labelProp": "LabelColumnProperty",
+            "multiple": false,
+            "defaultRequired": true,
+            "enableSearch": true
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Required Validationy\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-fileupload",
+        "className": "col-md-12",
+        "templateOptions": {
+            "label": "File Upload",
+            "buttonText": "File",
+            "previewElemId": "preview",
+            "placeHolder": "Plcaeholder",
+            "required": true,
+            "uploadUrl": "/api/uploadFile",
+            "message": "Upload the file bro!",
+            "maxSize": "5MB",
+            "fileName": ""
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Description is required\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-radiobutton",
+        "templateOptions": {
+            "label": "Radio Button",
+            "className": "md-primary",
+            "options": [],
+            "required": true,
+            "layout": "row"
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Required Validation\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-auto-complete",
+        "templateOptions": {
+            "label": "Auto Complete",
+            "minLength": 13,
+            "maxLength": 14,
+            "required": true,
+            "displayProperty": "DisplayName",
+            "isDisabled": false,
+            "noCache": true,
+            "placeholder": "Placeholder",
+            "data": [{
+                "index": 8,
+                "name": "Michael Huffman",
+                "age": 24,
+                "balance": "$2,028.75"
+            }]
+        },
+        "validation": {
+            "messages": {
+                "required": "'Required Validation'",
+                "minlength": "'Minlength Validation'",
+                "maxlength": "'Maxlength Validation'"
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-modalpopup",
+        "templateOptions": {
+            "label": "Modal Popup",
+            "popupType": "Alert",
+            "title": "Alert Title",
+            "textContent": "Alert message goes here...",
+            "clickOutsideToClose": true,
+            "okText": "Ok Text",
+            "buttonText": "Alert Dialog",
+            "ariaLabel": "Alert Dialog Demo",
+            "escapeToClose": false
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-datepicker",
+        "templateOptions": {
+            "label": "Date Picker",
+            "options": [],
+            "required": true,
+            "defaultRequired": true,
+            "disable": true,
+            "title": "Title",
+            "format": "yyyy/MM/dd",
+            "minDate": "1/1/2015",
+            "maxDate": "1/1/2020",
+            "disabled": false
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Required Validation\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-button",
+        "templateOptions": {
+            "class": "md-raised md-primary",
+            "title": "Submit",
+            "label": "Button",
+            "onClick": "formState.onClick(model)"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-label",
+        "templateOptions": {
+            "label": "Label"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-uigrid",
+        "templateOptions": {
+            "label": "UI Grid",
+            "enableFiltering": true,
+            "paginationPageSizes": [
+                25,
+                50,
+                75
+            ],
+            "paginationPageSize": 25,
+            "columnDefs": []
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-datatable",
+        "templateOptions": {
+            "label": "Data Table",
+            "columnDefs": [{
+                "field": "name",
+                "displayName": "Dessert (100g serving)",
+                "width": "20%"
+            }],
+            "sortBy": "name",
+            "paging": false,
+            "searching": false,
+            "page": 1,
+            "pageSize": 5,
+            "pageSizeOptions": [
+                5,
+                10,
+                15,
+                20
+            ],
+            "SelectCheckboxColumn": false,
+            "selected": []
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-accordion",
+        "templateOptions": {
+            "label": "Accordion",
+            "collapseAllButActive": false,
+            "contentClass": "contentClass",
+            "toolBarClass": "toolBarClass",
+            "toolBarClassActive": "toolBarClassActive",
+            "accordionOptionsArray": [{
+                "heading": "Freedom Fighter: AP",
+                "icon": "<i class=\"material-icons\">&#xE84F;</i>",
+                "fields": [{
+                        "key": "firstname",
+                        "id": "firstname",
+                        "type": "ep-text",
+                        "templateOptions": {
+                            "label": "First Name"
+                        }
+                    },
+                    {
+                        "key": "lastname",
+                        "id": "lastname",
+                        "type": "ep-text",
+                        "templateOptions": {
+                            "label": "Last Name"
+                        }
+                    },
+                    {
+                        "key": "title",
+                        "id": "title",
+                        "type": "ep-text",
+                        "templateOptions": {
+                            "label": "Title"
+                        },
+                        "validation": {
+                            "messages": {
+                                "required": "\"Phone is required\""
+                            }
+                        },
+                        "expressionProperties": {
+                            "templateOptions.required": "model.married"
+                        }
+                    },
+                    {
+                        "key": "married",
+                        "id": "married",
+                        "type": "ep-checkbox",
+                        "templateOptions": {
+                            "label": "Married",
+                            "required": true,
+                            "islist": false
+                        }
+                    },
+                    {
+                        "key": "PRICE",
+                        "type": "ep-text",
+                        "className": "flex-30",
+                        "templateOptions": {
+                            "placeholder": "$ OFF, % OFF, Set Price",
+                            "title": "$ OFF ($10 OFF), % OFF (15% OFF), Fixed Price ($25), FREE, or COMPLIMENTARY",
+                            "label": "Enter Coupon Value",
+                            "required": true,
+                            "validator": "custom",
+                            "pattern": "((^\\$[1-9][\\d]{0,4}(\\.[\\d]{2}) (OFF|Off)$)|(^\\$[0]{1,2}(\\.([1-9][0-9]|[0][1-9])) (OFF|Off)$))|(^([1-9][0-9]?)% (OFF|Off)$)|((^\\$[1-9][\\d]{0,4}(\\.[\\d]{2})$)|(^\\$[0]{1,2}(\\.([1-9][0-9]|[0][1-9]))$))|(Complimentary|COMPLIMENTARY)"
+                        },
+                        "validation": {
+                            "messages": {
+                                "required": "'Please enter one of the following values ($OFF, %OFF, Set $ value, Complimentary) in coupon value.'",
+                                "pattern": "'Please enter one of the following values ($OFF, %OFF, Set $ value, Complimentary) in coupon value.'"
+                            }
+                        },
+                        "expressionProperties": {
+                            "templateOptions.removeDefault": "(model.PRICE == undefined && fc.$viewValue == \"$ OFF, % OFF, Set Price\")?model.PRICE = \"\":\"\""
+                        }
+                    },
+                    {
+                        "key": "button",
+                        "id": "Button2",
+                        "type": "ep-button",
+                        "templateOptions": {
+                            "class": "md-default",
+                            "title": "Submit",
+                            "label": "Flat Button",
+                            "onClick": "formState.onClick(model,this)"
+                        }
+                    }
+                ],
+                "myForm": "Rebel",
+                "options": {
+                    "formState": {
+                        "disabled": true
+                    }
+                }
+            }],
+            "className": "width-100",
+            "icon": "<i class=\"material-icons\">&#xE84F;</i>"
+        },
+        "extras": {},
+        "data": {},
+        "validation": {
+            "messages": {}
+        }
+    }
+]

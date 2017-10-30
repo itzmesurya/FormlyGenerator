@@ -1,0 +1,487 @@
+[{
+        "id": "FieldName",
+        "key": "keyName",
+        "type": "ep-typeahead",
+
+        "templateOptions": {
+            "actualModel": "ModelName",
+            "label": "AutoComplete",
+            "initKey": "InitKey",
+            "options": [],
+            "valueProp": "ValueColumnProperty",
+            "labelProp": "LabelColumnProperty"
+        }
+    },
+    {
+        "id": "FieldName",
+        "type": "ep-button",
+
+        "templateOptions": {
+            "label": "Button",
+            "text": "ButtonText",
+            "onClick": "formState.submit(model)",
+            "type": "button",
+            "btnType": "btn btn-default"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-calendarEnrollDates",
+        "templateOptions": {
+            "label": "Calendar Enroll Dates",
+            "title": "Calendar Enroll Dates",
+            "type": "text",
+            "required": true,
+            "readonlyInput": false,
+            "datepickerOptions": {
+                "format": "MM/dd",
+                "enableMindate": false,
+                "monthLength": 3,
+                "monthStyle": 1,
+                "formatDayTitle": "MMMM yyyy",
+                "maxMode": "day"
+            },
+            "showValidationsummary": true,
+            "enablePreviousMonthValidation": false
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-checkbox",
+
+        "ngModelAttrs": {
+            "ngFalseValue": {
+                "attribute": "ng-false-value"
+            },
+            "ngTrueValue": {
+                "attribute": "ng-true-value"
+            }
+        },
+        "templateOptions": {
+            "required": true,
+            "label": "CheckBox",
+            "ngFalseValue": "'False'",
+            "ngTrueValue": "'True'"
+        },
+        "validation": {
+            "messages": {}
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-checklist",
+
+        "templateOptions": {
+            "label": "Check List",
+            "options": [{
+                    "id": 1,
+                    "title": "Check 1"
+                },
+                {
+                    "id": 2,
+                    "title": "check 2"
+                }
+            ],
+            "valueProp": "title",
+            "labelProp": "title",
+            "required": true,
+            "directionclass": "checkbox-inline"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-ckeditor",
+
+        "templateOptions": {
+            "required": true,
+            "label": "CK Editor",
+            "maxlength": 200,
+            "wordchecklist": [
+                "ass",
+                "fuck",
+                "bastards",
+                "bastardz",
+                "basterds",
+                "basterdz",
+                "Biatch",
+                "bitch",
+                "bitches"
+            ]
+        },
+        "validation": {
+            "messages": {
+                "required": "\"'Required Validation\"",
+                "maxlength": "\"Maxlength Validation\"",
+                "profane": "\"Custom: Profanity detected in communication content. Please revise before continuing.\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "type": "ep-collapseexpand",
+        "templateOptions": {
+            "label": "Collapse Expand",
+            "collapseText": "Collapse Text",
+            "expandText": "Expand Text",
+            "divClass": "panel panel-primary",
+            "propertyName": "PropertyName",
+            "btnType": "link"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-contextbutton",
+
+        "templateOptions": {
+            "label": "Context Button",
+            "entity": "EntityName",
+            "headerMessage": "Header Text",
+            "action": "GET",
+            "buttonText": "Button Text"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-datepicker",
+
+        "templateOptions": {
+            "type": "text",
+            "label": "Date Picker",
+            "datepickerOptions": {
+                "format": "dd-MMMM-yyyy"
+            },
+            "outputFormat": "MM/dd/yyyy",
+            "required": true
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Required\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "TempKeyName",
+        "type": "ep-select",
+
+        "templateOptions": {
+            "actualModel": "KeyName",
+            "label": "Dropdown",
+            "initKey": "InitKeyName",
+            "options": [],
+            "valueProp": "S_NAME",
+            "labelProp": "S_NAME"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-editableselect",
+
+        "templateOptions": {
+            "label": "Editable Dropdown",
+            "labelProp": "TITLE",
+            "required": true,
+            "options": [{
+                    "TITLE": "Option1"
+                },
+                {
+                    "TITLE": "Option2"
+                },
+                {
+                    "TITLE": "Option3"
+                },
+                {
+                    "TITLE": "Option4"
+                },
+                {
+                    "TITLE": "Option5"
+                }
+            ]
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-filterbutton",
+
+        "templateOptions": {
+            "modelIdProperty": "ModelID Property",
+            "modelNameProperty": "ModelNameProperty",
+            "objidColumn": "OBJIDColumn",
+            "idColumn": "IdColumn",
+            "nameColumn": "NameColumn",
+            "commonSearch": false,
+            "searchTitle": "Select Header",
+            "programName": "ProgramName",
+            "formName": "FormName",
+            "label": "Filter Button",
+            "labelCssClass": "col-sm-2",
+            "title": "This button allows you to fetch information",
+            "required": true
+        },
+        "validation": {
+            "messages": {
+                "required": "\"'Required Validation\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-genericcrud",
+
+        "templateOptions": {
+            "label": "Generic CRUD",
+            "enableFiltering": true,
+            "enableSorting": true,
+            "enableColumnResizing": true,
+            "paginationPageSizes": [
+                15,
+                25,
+                50
+            ],
+            "paginationPageSize": 15,
+            "enableRowSelection": true,
+            "enableSelectAll": true,
+            "enablePaginationControls": true,
+            "columnDefs": [{
+                "field": "FieldName",
+                "displayName": "ColumnDisplayName",
+                "enableFiltering": false,
+                "enableSorting": false,
+                "width": "80",
+                "cellTemplate": "InnerHtml",
+                "cellClass": "no-horizontal-padding"
+            }],
+            "editActionDisplay": "",
+            "deleteActionDisplay": "",
+            "addActionDisplay": "<i class=\"fa fa-plus-square bigger-110\"></i>&nbsp;Add Product",
+            "primaryid": "OBJID",
+            "editFormHeader": "Product"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-grid",
+
+        "templateOptions": {
+            "label": "Grid",
+            "columnDefs": {
+                "field": "FieldName",
+                "displayName": "ColumnDisplayName",
+                "enableFiltering": false,
+                "enableSorting": false,
+                "width": "80",
+                "cellTemplate": "InnerHtml",
+                "cellClass": "no-horizontal-padding"
+            },
+            "onRegisterApi": ""
+        },
+        "controller": "formState.uiGridCtrl"
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "UIhours",
+
+        "templateOptions": {
+            "label": "Hours",
+            "ddlminutestep": "10",
+            "minutestep": "5",
+            "disabled": false,
+            "mousewheel": true,
+            "arrowkeys": true,
+            "hourstype": "HoursType",
+            "readonlyInput": false
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-label",
+
+        "templateOptions": {
+            "title": "Label",
+            "label": "Label",
+            "filterString": "date:'MM/dd/yyyy hh:mm'",
+            "labelClass": "col-sm-6 col-md-6 col-lg-6 no-horizontal-padding",
+            "valueCalss": "col-sm-6 col-md-6 col-lg-6 no-horizontal-padding"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "maskedInput",
+
+        "templateOptions": {
+            "required": true,
+            "label": "Masked Input",
+            "mask": "(999) 999-9999",
+            "pattern": "^\\([2-9][0-9]{2}\\) [0-9]{3}-[0-9]{4}$"
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Required Validation\"",
+                "pattern": "\"Pattern Validation\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "md-button",
+        "templateOptions": {
+            "label": "Master Detail",
+            "text": "Button Text",
+            "type": "submit",
+            "formName": "FormName",
+            "programName": "ProgramName",
+            "btnType": "primary btn-sm",
+            "title": "This allows you to View Activity log",
+            "ActivityFormName": "ActivityFormName",
+            "action": "LIST",
+            "modalHeader": "Modal Header"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-multiselect",
+        "templateOptions": {
+            "label": "Multi Select",
+            "buttonlabel": "name",
+            "itemlabel": "name maker",
+            "tickproperty": "ticked",
+            "outputproperties": "id name"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-picklist",
+        "templateOptions": {
+            "label": "Pick List",
+            "initKey": "IntiKey",
+            "options": [],
+            "valueProp": "ValueColumnProperty",
+            "labelProp": "LabelColumnProperty"
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-radio",
+        "templateOptions": {
+            "required": true,
+            "label": "Radion Button",
+            "valueProp": "value",
+            "labelProp": "name",
+            "options": [{
+                    "name": "Option1",
+                    "value": "Value1"
+                },
+                {
+                    "name": "Option2",
+                    "value": "Value2"
+                }
+            ]
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-repeat",
+        "templateOptions": {
+            "label": "Reperter",
+            "btnText": "ButtonText",
+            "fields": [{
+                "className": "ClassName",
+                "fieldGroup": [{
+                    "className": "col-xs-4",
+                    "type": "ep-text",
+                    "key": "KeyName",
+                    "templateOptions": {
+                        "label": "LabelName",
+                        "required": true
+                    }
+                }]
+            }]
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-searchableDropdown",
+        "templateOptions": {
+            "actualModel": "ActualKeyName",
+            "label": "Searchable Dropdown",
+            "searchableinitKey": "InitKey",
+            "valueProp": "ValueColumnProperty",
+            "labelProp": "LabelColumnProperty",
+            "isSelectOptionRequired": true,
+            "searchContains": true,
+            "enableContextButton": true,
+            "contextButtonText": "ContextButtonText",
+            "contextButtonAction": "GET",
+            "filter": {
+                "column": "FilterColumn",
+                "value": "FilterCalue"
+            }
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Required Validation\""
+            }
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-switch",
+        "templateOptions": {
+            "label": "Switch",
+            "ngFalseValue": 0,
+            "ngTrueValue": 1
+        }
+    },
+    {
+        "id": "FieldName",
+        "key": "KeyName",
+        "type": "ep-textarea",
+        "templateOptions": {
+            "label": "TextArea",
+            "resize": "none",
+            "required": true,
+            "autosize": false
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Required Validation\"",
+                "profane": "\"Custom: Profanity detected in communication content. Please revise before continuing.\""
+            }
+        }
+    },
+    {
+        "key": "phone",
+        "type": "ep-text",
+        "templateOptions": {
+            "label": "TextBox",
+            "validator": "Phone",
+            "required": true
+        },
+        "validation": {
+            "messages": {
+                "required": "\"Required Validation\"",
+                "pattern": "\"Pattern Validation\""
+            }
+        }
+    }
+]
