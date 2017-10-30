@@ -5,9 +5,9 @@
         .module('ep.prism')
         .controller('PrismController', PrismController);
 
-    PrismController.$inject = ['$scope', '$location', '$http', '$window', '$mdDialog'];
+    PrismController.$inject = ['$scope', '$location', '$http', '$window', '$mdDialog','$epGenericDataService','epGenSettingsVal'];
 
-    function PrismController($scope, $location, $http, $window, $mdDialog) {
+    function PrismController($scope, $location, $http, $window, $mdDialog, $epGenericDataService,epGenSettingsVal) {
         var vm = this;
         vm.getUrlParameter = function (param, dummyPath) {
             var sPageURL = dummyPath || window.location.search.substring(1),
@@ -33,95 +33,45 @@
         };
         vm.mergedJsonWithSections = {};
         vm.sections = [];
-
-        $http.post('http://localhost:3000/genericdataservice/getFormlyFields/' + programname + '/' + formname, {
-            "action": "getFormlyFields",
-            "programName": programname,
-            "formName": formname,
-            "params": {
-                "isDev": false
-            },
-            "cachingInfo": {}
-        }).then(function (response) {
-            vm.mergedJsonWithSections = response.data;
-            for (var key in vm.mergedJsonWithSections) {
-                if (vm.mergedJsonWithSections.hasOwnProperty(key)) {
-                    vm.sections.push(key);
-                }
-            }
-        }, function (response) {
-
-        });
-
-
-        vm.formlyFieldsForPreivew = [{
-                "key": "button",
-                "id": "Button1",
-                "type": "ep-button",
-                "templateOptions": {
-                    "templateType": "field",
-                    "class": "md-raised md-primary",
-                    "title": "Button",
-                    "label": "Button",
-                    "onClick": "formState.onClick(model)"
-                }
-            },
-            {
-                "key": "person",
-                "id": "person",
-                "type": "ep-auto-complete",
-                "templateOptions": {
-                    "label": "AutoComplete",
-                    "templateType": "field",
-                    "minLength": 13,
-                    "maxLength": 34,
-                    "required": true,
-                    "displayProperty": "name",
-                    "isDisabled": false,
-                    "noCache": true,
-                    "placeholder": "Select a person",
-                    "resource": {
-                        "apiUrl": "/api/filterJson",
-                        "postObj": {
-                            "filename": "piggybank",
-                            "propname": "name"
+        vm.getFieldData = function () {
+            $epGenericDataService.getFormlyForm(programname,
+                formname, {
+                        'params': {
+                            'isDev': epGenSettingsVal.isDev
+                        },
+                        'pi_user': 'User'
+                    })
+                .$promise.then(function (data) {
+                    if (data) {
+                        vm.mergedJsonWithSections = data.data;
+                        for (var key in vm.mergedJsonWithSections) {
+                            if (vm.mergedJsonWithSections.hasOwnProperty(key) && angular.isArray(vm.mergedJsonWithSections[key])) {
+                                vm.sections.push(key);
+                            }
                         }
-                    },
-                    "data": [{
-                            "index": 8,
-                            "name": "Michael Huffman",
-                            "age": 24,
-                            "balance": "$2,028.75"
-                        },
-                        {
-                            "index": 9,
-                            "name": "Bartlett Baird",
-                            "age": 32,
-                            "balance": "$2,787.56"
-                        },
-                        {
-                            "index": 10,
-                            "name": "Baird Mccray",
-                            "age": 23,
-                            "balance": "$2,090.15"
-                        },
-                        {
-                            "index": 11,
-                            "name": "Barker Hall",
-                            "age": 25,
-                            "balance": "$1,022.24"
-                        }
-                    ]
-                },
-                "validation": {
-                    "messages": {
-                        "required": "'Person is required'",
-                        "minlength": "'Min length error'",
-                        "maxlength": "'Max length error'"
                     }
-                }
-            }
-        ];
+                });
+        };
+        vm.getFieldData();
+        // $http.post('http://localhost:3000/genericdataservice/getFormlyFieldsForGenerator/' + programname + '/' + formname, {
+        //     "action": "getFormlyFieldsForGenerator",
+        //     "programName": programname,
+        //     "formName": formname,
+        //     "params": {
+        //         "isDev": false
+        //     },
+        //     "cachingInfo": {}
+        // }).then(function (response) {
+        //     vm.mergedJsonWithSections = response.data.data;
+        //     for (var key in vm.mergedJsonWithSections) {
+        //         if (vm.mergedJsonWithSections.hasOwnProperty(key)) {
+        //             vm.sections.push(key);
+        //         }
+        //     }
+        // }, function (response) {
+
+        // });
+
         activate();
 
         ////////////////
